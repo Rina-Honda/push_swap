@@ -16,22 +16,23 @@
 
 int	main(int argc, char **argv)
 {
-	t_stack	*a;
+	t_stack	**a;
 
 	a = ft_parse_args(argc, argv);
-	if (a == NULL || ft_checkdup(a))
+	if (a == NULL || ft_checkdup((a)))
 	{
-		ft_free(&a);
+		ft_free(a);
 		ft_error();
 		return (0);
 	}
+	// printf("check\n");
 
 	// int c = ft_checksorted(a);
 	// printf("%d\n", c);
 
 	if (!ft_checksorted(a))
-		ft_sort(&a);
-	
+		ft_sort(a);
+	// printf("check2\n");
 	// printf("=======\n");
 	// while (a != NULL)
 	// {
@@ -39,6 +40,6 @@ int	main(int argc, char **argv)
 	//     a = a->next;
 	// }
 
-	ft_free(&a);
+	ft_free(a);
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: rhonda <rhonda@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/25 05:23:23 by rhonda            #+#    #+#             */
-/*   Updated: 2024/08/27 18:09:46 by rhonda           ###   ########.fr       */
+/*   Updated: 2024/09/01 20:29:18 by rhonda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,6 @@ static	t_stack *ft_new_stack_variable_args(char **argv)
 	t_stack	*node;
 	int		i;
 
-	a = NULL;
 	i = 1;
 	while (argv[i] != NULL)
 	{
@@ -46,10 +45,15 @@ static	t_stack *ft_new_stack_variable_args(char **argv)
 			i++;
 		}
 		else
-			return (NULL);
+		{
+			write(2, "Error\n", 6);
+			ft_free(&a);
+			exit(1);
+		}
 	}
 	return (a);
 }
+
 
 void	ft_free_double_ptr(char **ptr)
 {
@@ -81,18 +85,22 @@ static	t_stack *ft_new_stack_quote(char *str)
 		if (ft_isdigit(splited[i]))
 		{
 			node = ft_new_node(ft_atoi(splited[i]));
-			ft_stack_add_back(&a, node);
+			ft_stack_add_back(a, node);
 			i++;
 		}
 		else
-			return (NULL);
+		{
+			write(2, "Error\n", 6);
+			ft_free(&a);
+			exit(1);
+		}
 	}
 	ft_free_double_ptr(splited);
 	free(splited);
 	return (a);
 }
 
-t_stack	*ft_parse_args(int argc, char **argv)
+t_stack	**ft_parse_args(int argc, char **argv)
 {
 	t_stack *a;
 
@@ -101,5 +109,5 @@ t_stack	*ft_parse_args(int argc, char **argv)
 		a = ft_new_stack_quote(argv[1]);
 	else if (argc > 2)
 		a = ft_new_stack_variable_args(argv);
-	return (a);
+	return (&(a));
 }

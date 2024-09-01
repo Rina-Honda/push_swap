@@ -6,7 +6,7 @@
 /*   By: rhonda <rhonda@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/20 01:44:49 by rhonda            #+#    #+#             */
-/*   Updated: 2024/08/29 00:26:10 by rhonda           ###   ########.fr       */
+/*   Updated: 2024/09/01 19:44:28 by rhonda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,28 +23,28 @@ void print_stack(t_stack *stack)
 }
 static void ft_sort_b_till_three(t_stack **a, t_stack **b)
 {
-    t_rotation rot;
     t_stack *tmp;
     
     // printf("check_ft_sort_b_till_three\n");
     while (ft_listsize(*a) > 3 && !ft_checksorted(*a))
     {
         tmp = *a;
-        rot = ft_rotate_type_ab(*a, *b);
+        t_stack *most_lowest_node;
+        most_lowest_node= ft_rotate_type_ab(*a, *b);
         
         // printf("Rotate type: %d, Cost: %d\n", rot.type, rot.cost);
+            // printf("Forcing element move\n");
         
-        if (rot.type == 1)
+        if (most_lowest_node->type == 1)
             ft_apply_rarb(a, b, tmp->num, 'a');
-        else if (rot.type == 2)
+        else if (most_lowest_node->type == 2)
             ft_apply_rrarrb(a, b, tmp->num, 'a');
-        else if (rot.type == 3)
+        else if (most_lowest_node->type == 3)
             ft_apply_rarrb(a, b, tmp->num, 'a');
-        else if (rot.type == 4)
+        else if (most_lowest_node->type == 4)
             ft_apply_rrarb(a, b, tmp->num, 'a');
         else
         {
-            // printf("Forcing element move\n");
             ft_px(a, b, 'b', 0);
         }
         
@@ -67,8 +67,8 @@ static t_stack	*ft_sort_b(t_stack **a)
 		ft_px(a, &b, 'b', 0);
 	if (ft_listsize(*a) > 3 && !ft_checksorted(*a))
 		ft_px(a, &b, 'b', 0);
-	// printf("check_before_ft_sort_b_till_three\n");	
-	// if (ft_listsize(*a) > 3 && !ft_checksorted(*a))
+	printf("!!!check_before_ft_sort_b_till_three\n");	
+	if (ft_listsize(*a) > 3 && !ft_checksorted(*a))
 	ft_sort_b_till_three(a, &b);
 	if (!ft_checksorted(*a))
 		ft_sort_three(a);
@@ -79,24 +79,25 @@ static t_stack	*ft_sort_b(t_stack **a)
 
 static void ft_sort_a(t_stack **a, t_stack **b)
 {
-    t_rotation rot;
     t_stack *tmp;
+    t_stack  *most_lowest_node;
+;
 
     // printf("Entering ft_sort_a\n");
     while (*b != NULL)
     {
         tmp = *b;
-        rot = ft_rotate_type_ba(*a, *b);
+        most_lowest_node= ft_rotate_type_ba(*a, *b);
         
         // printf("Rotate type: %d, Cost: %d\n", rot.type, rot.cost);
         
-        if (rot.type == 1)
+        if (most_lowest_node->type == 1)
             ft_apply_rarb(a, b, tmp->num, 'b');
-        else if (rot.type == 2)
+        else if (most_lowest_node->type == 2)
             ft_apply_rrarrb(a, b, tmp->num, 'b');
-        else if (rot.type == 3)
+        else if (most_lowest_node->type == 3)
             ft_apply_rarrb(a, b, tmp->num, 'b');
-        else if (rot.type == 4)
+        else if (most_lowest_node->type == 4)
             ft_apply_rrarb(a, b, tmp->num, 'b');
         else
         {
@@ -121,15 +122,16 @@ void	ft_sort(t_stack **a)
 
 	b = NULL;
 	// int c = ft_listsize(*a);
-	// printf("%d\n", c);
+	printf("sort\n");
 	if (ft_listsize(*a) == 2)
 		ft_sx(a, 'a', 0);
 	else
 	{
+        printf("call_check_before_ft_sort_b\n");
 		b = ft_sort_b(a);
-		// printf("call_check_after_ft_sort_b\n");
 		ft_sort_a(a, &b);
-		// printf("call_check_after_ft_sort_a\n");
+		printf("call_check_after_ft_sort_b\n");
+		printf("call_check_after_ft_sort_a\n");
 		// printf("stacka: %p\n", a);
 		i = ft_find_index(*a, ft_min(*a));
 		// printf("sort_min: %d\n", i);

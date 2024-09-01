@@ -11,9 +11,11 @@
 /* ************************************************************************** */
 
 #include "./ft_push_swap.h"
+#include <stdio.h>
 
 void	ft_px(t_stack **y, t_stack **x, int stack, int j)
 {
+	printf("check_push\n");
 	t_stack	*tmp;
 
 	if (*y == NULL)

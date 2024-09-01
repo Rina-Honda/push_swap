@@ -22,7 +22,7 @@ int	ft_find_index(t_stack *x, int target)
 		i++;
 		x = x->next;
 	}
-	x->index = 0; //mark the node?
+	// x->index = 0; //mark the node?
 	return (i);
 }
 

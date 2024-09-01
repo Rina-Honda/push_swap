@@ -6,7 +6,7 @@
 /*   By: rhonda <rhonda@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/25 04:55:32 by rhonda            #+#    #+#             */
-/*   Updated: 2024/08/29 00:21:22 by rhonda           ###   ########.fr       */
+/*   Updated: 2024/09/01 20:24:57 by rhonda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,32 +27,27 @@
 typedef struct s_stack
 {
 	long			num;
-	long			index;
 	struct s_stack *next;
-	struct s_stack *prev;
-}	t_stack;
-
-typedef struct s_rotation
-{
     int type;  // 回転タイプ（1: rarb, 2: rrarrb, 3: rarrb, 4: rrarb）
     int cost;  // 回転コスト
-} t_rotation;
+}	t_stack;
+
 
 //function
 void	ft_error(void);
 void	ft_free(t_stack **list);
-int		ft_checkdup(t_stack *a);
-int		ft_checksorted(t_stack *a);
+int		ft_checkdup(t_stack **a);
+int		ft_checksorted(t_stack **a);
 t_stack	*ft_new_node(int num);
-t_stack	*ft_parse_args(int argc, char **argv);
+t_stack	**ft_parse_args(int argc, char **argv);
 void	ft_stack_add_back(t_stack **stack, t_stack *new_node);
 
 void	ft_sort(t_stack **a);
 void	ft_sort_three(t_stack **a);
 // int		ft_rotate_type_ab(t_stack *a, t_stack *b);
 // int		ft_rotate_type_ba(t_stack *a, t_stack *b);
-t_rotation ft_rotate_type_ab(t_stack *a, t_stack *b);
-t_rotation ft_rotate_type_ba(t_stack *a, t_stack *b);
+t_stack *ft_rotate_type_ab(t_stack *a, t_stack *b);
+t_stack *ft_rotate_type_ba(t_stack *a, t_stack *b);
 
 int		ft_case_rarb(t_stack *a, t_stack *b, int target);
 int		ft_case_rrarrb(t_stack *a, t_stack *b, int target);

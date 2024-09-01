@@ -12,19 +12,19 @@
 
 #include "ft_push_swap.h"
 
-int	ft_checkdup(t_stack *a)
+int	ft_checkdup(t_stack **a)
 {
 	t_stack	*tmp;
 
-	while (a != NULL) {
-		tmp = a->next;
+	while ((*a) != NULL) {
+		tmp = (*a)->next;
 		while (tmp != NULL)
 		{
-			if (a->num == tmp->num)
+			if ((*a)->num == tmp->num)
 				return (1);
 			tmp = tmp->next;
 		}
-		a = a->next;
+		(*a) = (*a)->next;
 	}
 	return (0);
 }

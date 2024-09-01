@@ -14,15 +14,15 @@
 
 int	ft_checksorted(t_stack *a)
 {
-	int	i;
+	t_stack *current;
 
-	i = a->num;
-	while (a != NULL)
+	current= a;
+	while (current->next)
 	{
-		if (i > a->num)
-			return (0);
-		i = a->num;
-		a = a->next;
+		if (current->num >current->next->num)
+			return (0); //sort is false
+		current =current->next;
+		// a = a->next;
 	}
-	return (1);
+	return (1);//sort is true
 }
