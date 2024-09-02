@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./ft_push_swap.h"
+#include "ft_push_swap.h"
 
 #include <stdio.h>
 
@@ -23,22 +23,16 @@ int	main(int argc, char **argv)
 	{
 		ft_free(&a);
 		ft_error();
-		return (0);
+		return (0);	// !!!! エラー終了なら return (1); にすべき -> 未修正
 	}
-
-	// int c = ft_checksorted(a);
-	// printf("%d\n", c);
-
 	if (!ft_checksorted(a))
 		ft_sort(&a);
-	
-	// printf("=======\n");
-	// while (a != NULL)
-	// {
-	//     printf("%ld\n", a->num);
-	//     a = a->next;
-	// }
-
 	ft_free(&a);
 	return (0);
 }
+
+// !! leaksチェック用(SANITIZE使用時はコメントアウト)
+// __attribute__((destructor))
+// static void destructor() {
+//     system("leaks -q push_swap");
+// }

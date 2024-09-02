@@ -39,7 +39,7 @@ int	ft_find_place_b(t_stack *b, int num_push)
 	else
 	{
 		b_next = b->next;
-		while (b->num < num_push || num_push < b_next->num)
+		while (b->num < num_push || num_push < b_next->num)	// !! (!(b->num > num_push && num_push > b_next->num))
 		{
 			b = b->next;
 			b_next = b->next;
@@ -62,7 +62,7 @@ int	ft_find_place_a(t_stack *a, int num_push)
 	else
 	{
 		a_next = a->next;
-		while (num_push < a->num || a_next->num < num_push)
+		while (num_push < a->num || a_next->num < num_push)	// !! (!(a->num < num_push && num_push < a_next->num))
 		{
 			a = a->next;
 			a_next = a->next;

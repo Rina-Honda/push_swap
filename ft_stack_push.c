@@ -10,8 +10,9 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./ft_push_swap.h"
+#include "ft_push_swap.h"
 
+// void	ft_px(t_stack **from, t_stack **to, char stack_name, bool print_flag)	// !! 等推奨(判読性)
 void	ft_px(t_stack **y, t_stack **x, int stack, int j)
 {
 	t_stack	*tmp;

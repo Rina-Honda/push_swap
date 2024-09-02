@@ -2,6 +2,7 @@ NAME = push_swap
 CC = gcc
 RM = rm -f
 FLAGS = -Wall -Wextra -Werror
+# SANITIZE = -fsanitize=address	# !! segvチェック用(leaksチェック時は外す)
 
 SRC =	ft_main.c \
 		ft_parse_args.c \
@@ -30,10 +31,10 @@ SRC =	ft_main.c \
 OBJ = ${SRC:.c=.o}
 
 .c.o:
-	${CC} ${FLAGS} -c $< -o ${<:.c=.o}
+	${CC} ${FLAGS} -c $< -o ${<:.c=.o} ${SANITIZE}
 
 ${NAME}: ${OBJ}
-	${CC} ${FLAGS} ${OBJ} -o ${NAME}
+	${CC} ${FLAGS} ${OBJ} -o ${NAME} ${SANITIZE}
 
 all: ${NAME}
 
