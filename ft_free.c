@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_free.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rhonda <rhonda@student.42.fr>              +#+  +:+       +#+        */
+/*   By: hkoizumi <hkoizumi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/11 19:22:59 by rhonda            #+#    #+#             */
-/*   Updated: 2024/08/27 18:06:57 by rhonda           ###   ########.fr       */
+/*   Updated: 2024/09/03 01:04:12 by hkoizumi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	ft_free(t_stack **list)
 	while (*list != NULL)
 	{
 		tmp = (*list)->next;
-		(*list)->num = 0; //numを0にする必要はある？
+		(*list)->num = 0; //numを0にする必要はある？ -> // !! おそらくない
 		free(*list);
 		*list = tmp;
 	}

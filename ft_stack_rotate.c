@@ -10,8 +10,9 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./ft_push_swap.h"
+#include "ft_push_swap.h"
 
+// void	ft_rx(t_stack **x, char stack_name, bool print_flag)	// !! 等推奨(判読性)
 void	ft_rx(t_stack **x, int stack, int j)
 {
 	t_stack	*tmp;
@@ -32,7 +33,7 @@ void	ft_rx(t_stack **x, int stack, int j)
 	}
 }
 
-void	ft_rr(t_stack **a, t_stack **b, int j)
+void	ft_rr(t_stack **a, t_stack **b, int j)	// !! int j -> bool print_flag 等推奨(判読性)
 {
 	if (*a == NULL || (*a)->next == NULL || *b == NULL || (*b)->next == NULL)
 		return ;

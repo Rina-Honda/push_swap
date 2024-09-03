@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_push_swap.h                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rhonda <rhonda@student.42.fr>              +#+  +:+       +#+        */
+/*   By: hkoizumi <hkoizumi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/25 04:55:32 by rhonda            #+#    #+#             */
-/*   Updated: 2024/08/27 18:08:31 by rhonda           ###   ########.fr       */
+/*   Updated: 2024/09/03 01:04:12 by hkoizumi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,14 @@
 # include <stddef.h>
 # include <limits.h>
 # include <stdlib.h>
+// # include <stdbool.h> // !! bool型を使う場合
+# include <stdio.h>	// debug用
 
 //define
+// # define RARB 1		// !! ft_rotate_type.c, ft_sort.c内で使用する場合
+// # define RRARRB 2	// !! 同上
+// # define RARRB 3		// !! 同上
+// # define RRARB 4		// !! 同上
 
 //typedef  
 
@@ -28,8 +34,10 @@ typedef struct s_stack
 {
 	long			num;
 	long			index;
+	int				cost;	// 追加
+	int				type;	// 追加
 	struct s_stack *next;
-	struct s_stack *prev;
+	struct s_stack *prev;	// !!! 未使用では
 }	t_stack;
 
 //function
@@ -43,8 +51,8 @@ void	ft_stack_add_back(t_stack **stack, t_stack *new_node);
 
 void	ft_sort(t_stack **a);
 void	ft_sort_three(t_stack **a);
-int		ft_rotate_type_ab(t_stack *a, t_stack *b);
-int		ft_rotate_type_ba(t_stack *a, t_stack *b);
+void	ft_rotate_type_ab(t_stack *a, t_stack *b);	// 修正
+void	ft_rotate_type_ba(t_stack *a, t_stack *b);	// 修正
 
 int		ft_case_rarb(t_stack *a, t_stack *b, int target);
 int		ft_case_rrarrb(t_stack *a, t_stack *b, int target);

@@ -12,7 +12,7 @@
 
 #include "ft_push_swap.h"
 
-int	ft_checkdup(t_stack *a)
+int	ft_checkdup(t_stack *a)	// !! 返り値はbool型推奨
 {
 	t_stack	*tmp;
 

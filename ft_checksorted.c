@@ -10,9 +10,9 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./ft_push_swap.h"
+#include "ft_push_swap.h"
 
-int	ft_checksorted(t_stack *a)
+int	ft_checksorted(t_stack *a)	// !! 返り値はbool型推奨
 {
 	int	i;
 
